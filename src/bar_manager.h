@@ -5,6 +5,7 @@ struct bar_manager
 {
     struct bar **bars;
     int bar_count;
+    uint32_t height;
     char *t_font_prop;
     char *i_font_prop;
     CTFontRef t_font;
@@ -36,6 +37,7 @@ void bar_manager_set_power_strip(struct bar_manager *bar_manager, char **icon_st
 void bar_manager_set_clock_icon(struct bar_manager *bar_manager, char *icon);
 void bar_manager_set_clock_format(struct bar_manager *bar_manager, char *format);
 void bar_manager_set_space_icon(struct bar_manager *bar_manager, char *icon);
+void bar_manager_set_height(struct bar_manager *bar_manager, uint32_t height);
 
 void bar_manager_display_changed(struct bar_manager *bar_manager);
 void bar_manager_refresh(struct bar_manager *bar_manager);

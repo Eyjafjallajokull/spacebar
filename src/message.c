@@ -21,6 +21,7 @@ extern bool g_verbose;
 #define COMMAND_CONFIG_BAR_SPACE_ICON        "space_icon"
 #define COMMAND_CONFIG_BAR_CLOCK_ICON        "clock_icon"
 #define COMMAND_CONFIG_BAR_CLOCK_FORMAT      "clock_format"
+#define COMMAND_CONFIG_BAR_HEIGHT            "height"
 
 /* --------------------------------COMMON ARGUMENTS----------------------------- */
 #define ARGUMENT_COMMON_VAL_ON     "on"
@@ -194,6 +195,13 @@ static void handle_domain_config(FILE *rsp, struct token domain, char *message)
             fprintf(rsp, "%s\n", g_bar_manager._clock_icon ? g_bar_manager._clock_icon : "");
         } else {
             bar_manager_set_clock_format(&g_bar_manager, token_to_string(token));
+        }
+    } else if (token_equals(command, COMMAND_CONFIG_BAR_HEIGHT)) {
+        struct token token = get_token(&message);
+        if (!token_is_valid(token)) {
+            fprintf(rsp, "%s\n", g_bar_manager._clock_icon ? g_bar_manager._clock_icon : "");
+        } else {
+            bar_manager_set_height(&g_bar_manager, token_to_uint32t(token));
         }
     }
     else {

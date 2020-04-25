@@ -374,7 +374,7 @@ static CGPoint bar_create_frame(struct bar *bar, CFTypeRef *frame_region)
         origin.y   += menu.size.height;
     }
 
-    bar->frame = (CGRect) {{0, 0},{bounds.size.width, 26}};
+    bar->frame = (CGRect) {{0, 0},{bounds.size.width, g_bar_manager.height}};
     CGSNewRegionWithRect(&bar->frame, frame_region);
 
     return origin;

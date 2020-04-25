@@ -187,6 +187,12 @@ void bar_manager_set_space_icon(struct bar_manager *bar_manager, char *icon)
     bar_manager_refresh(bar_manager);
 }
 
+void bar_manager_set_height(struct bar_manager *bar_manager, uint32_t height) 
+{
+    bar_manager->height = height;
+    bar_manager_resize(bar_manager);
+}
+
 void bar_manager_display_changed(struct bar_manager *bar_manager)
 {
     for (int i = 0; i < bar_manager->bar_count; ++i)
@@ -219,6 +225,7 @@ void bar_manager_init(struct bar_manager *bar_manager)
     bar_manager_set_clock_format(bar_manager, string_copy("%R"));
     bar_manager_set_space_icon(bar_manager, string_copy("*"));
     bar_manager_set_power_strip(bar_manager, NULL);
+    bar_manager_set_height(bar_manager, 26);
 }
 
 void bar_manager_begin(struct bar_manager *bar_manager)
