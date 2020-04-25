@@ -43,8 +43,8 @@ void bar_manager_set_text_font(struct bar_manager *bar_manager, char *font_strin
     }
 
     bar_manager->t_font = bar_create_font(bar_manager->t_font_prop);
-    bar_manager->space_underline = bar_prepare_line(bar_manager->t_font, "______", rgba_color_from_hex(0xffd4d232));
-    bar_manager->power_underline = bar_prepare_line(bar_manager->t_font, "__________", rgba_color_from_hex(0xffd75f5f));
+    bar_manager->space_underline = bar_prepare_line(bar_manager->t_font, "___", rgba_color_from_hex(0xffd4d232));
+    bar_manager->power_underline = bar_prepare_line(bar_manager->t_font, "", rgba_color_from_hex(0xffd75f5f));
 
     time_t rawtime;
     time(&rawtime);
@@ -57,10 +57,10 @@ void bar_manager_set_text_font(struct bar_manager *bar_manager, char *font_strin
         for (int i = 0; i < strlen(time) + 4; ++i)
             underline[i] = '_';
 
-        bar_manager->clock_underline = bar_prepare_line(bar_manager->t_font, underline, rgba_color_from_hex(0xff458588));
+        bar_manager->clock_underline = bar_prepare_line(bar_manager->t_font, underline, bar_manager->background_color);
     }
     else
-        bar_manager->clock_underline = bar_prepare_line(bar_manager->t_font, "__________", rgba_color_from_hex(0xff458588));
+        bar_manager->clock_underline = bar_prepare_line(bar_manager->t_font, "", rgba_color_from_hex(0xff458588));
 
     bar_manager_refresh(bar_manager);
 }
